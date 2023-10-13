@@ -1,15 +1,10 @@
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView, Text, ToastAndroid } from 'react-native';
 import {
   GluestackUIProvider, 
   VStack,
   Box,
   Button,
-  useToast,
-  Toast,
   ButtonText,
-  ToastDescription,
-  ToastTitle,
-
 } from '@gluestack-ui/themed';
 import React from 'react';
 import { config } from '@gluestack-ui/config';
@@ -18,7 +13,9 @@ import { config } from '@gluestack-ui/config';
 
 export default function App() {
 
-  const toast = useToast();
+  const showToast = () => {
+    ToastAndroid.show('Hello, Have a great day!', ToastAndroid.SHORT);
+  };
   const Toasta = () => {
   return (
     
@@ -34,28 +31,13 @@ export default function App() {
       },
     }}>
     <Box width='100%' height='100%' alignItems="center" backgroundColor='#ffffff' flex={0} justifyContent='space-evenly'>
-        <Button
-            onPress={() => {
-            toast.show({
-                placement: "Top",
-                render: ({ id }) => {
-                return (
-                    <Toast nativeID={id} action="attention" variant="solid">
-                    <VStack space="xs">
-                        <ToastTitle>New Message</ToastTitle>
-                        <ToastDescription>
-                        Hey, just wanted to touch base and see how you're doing.
-                        Let's catch up soon!
-                        </ToastDescription>
-                    </VStack>
-                    </Toast>
-                )
-                },
-            })
-            }}
-        >
-            <ButtonText>Press Me</ButtonText>
-        </Button>
+
+      <Button title="Toggle Toast" onPress={() => showToast()} >
+        <ButtonText>
+          Press Me!
+        </ButtonText>
+      </Button>
+
     </Box>
     </VStack>
 

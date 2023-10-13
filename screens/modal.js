@@ -15,11 +15,11 @@ import {
   ModalBackdrop,
   ModalHeader,
   ModalCloseButton,
-  Icon
+  Icon,
+  CloseIcon
 } from '@gluestack-ui/themed';
 import React from 'react';
 import { config } from '@gluestack-ui/config';
-import { CloseIcon, FormControlErrorIcon, AlertCircleIcon } from 'lucide-react-native';
 
 
 

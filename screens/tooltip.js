@@ -1,21 +1,20 @@
-import { SafeAreaView, Text } from 'react-native';
+import { View, SafeAreaView, Text, Platform, StatusBar } from 'react-native';
+import Tooltip from "react-native-walkthrough-tooltip";
 import {
   GluestackUIProvider, 
   VStack,
   Box,
-  Tooltip,
-  TooltipContent,
-  TooltipText,
   Button,
-  ButtonText
+  ButtonText,
 } from '@gluestack-ui/themed';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { config } from '@gluestack-ui/config';
-import { CheckIcon, FormControlErrorIcon, AlertCircleIcon } from 'lucide-react-native';
 
 
 
 export default function App() {
+
+  const [showTip, setTip] = useState(false);
 
   const Format = () => {
   return (
@@ -34,20 +33,24 @@ export default function App() {
     <Box width='100%' height='100%' alignItems="center" backgroundColor='#ffffff' flex={0} justifyContent='space-evenly'>
         
         <Tooltip
-            placement="top" 
-            trigger={(triggerProps) => {
-            return (
-                <Button h='$24' {...triggerProps}>
-                <ButtonText>Hover on me!</ButtonText>
-                </Button>
-            );
-            }}
-        >
-            <TooltipContent>
-            <TooltipText>Tooltip</TooltipText>
-            </TooltipContent>
-        </Tooltip>
+        isVisible={showTip}
+        content={
+          <View>
+            <Text> I am a tooltip </Text>
+          </View>
+        }
+        onClose={() => setTip(false)}
+        placement="bottom"
+        // below is for the status bar of react navigation bar
+        topAdjustment={Platform.OS === 'android' ? -StatusBar.currentHeight : 0}
+      >
 
+        <Button title="Tooltip" onPress={() => setTip(true)} >
+        <ButtonText>
+          Press Me!
+        </ButtonText>
+      </Button>
+      </Tooltip>
     </Box>
     </VStack>
 

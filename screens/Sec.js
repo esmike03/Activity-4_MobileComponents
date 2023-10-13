@@ -1,8 +1,7 @@
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, ScrollView, scrollViewRef, screenIndex } from 'react-native';
 import 'react-native-gesture-handler';
-import { useRef } from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import {
   Box,
   Text,
@@ -11,15 +10,12 @@ import {
   Image,
   HStack,
   Heading,
-  ScrollView, 
-  scrollViewRef,
   Icon,
 } from '@gluestack-ui/themed';
 import LottieView from 'lottie-react-native';
 import { ChevronDown, Camera, ChromeIcon, InstagramIcon, FacebookIcon } from 'lucide-react-native';
 
 export default function Sec({ navigation }) {  
-  const ref = useRef<ScrollView>(null);
 
   const Main = () => {
     return (  
@@ -35,39 +31,39 @@ export default function Sec({ navigation }) {
         }}>
           <ScrollView ref={scrollViewRef} pagingEnabled={true} >
           <VStack alignItems="center" space="lg" paddingTop={100} paddingBottom= {110}>
-            <View>
-                <LottieView
-                autoPlay
-                style={{
-                    width: 300,
-                    height: 300,
-                }}
-                source={require("../assets/react3.json")}
-                />
-            </View>
-            <Heading color='lightblue' fontSize={30}>REACT NATIVE</Heading>
-            <Text style={{ textAlign: 'center', fontSize: 18, marginHorizontal: 20}}>
-             React Native is an open-source framework for building cross-platform mobile apps with JavaScript and React.
-             It offers a rich collection of pre-built native components, enabling efficient development for both iOS and
-             Android using a single codebase.</Text>
-            <TouchableOpacity onPress={()=> {
-              ref.current?.scrollToEnd();
-            }}>
-              <Icon marginBottom='300' color='gray' marginTop={100} as={ChevronDown} />  
-            </TouchableOpacity>       
+              <View>
+                  <LottieView
+                  autoPlay
+                  style={{
+                      width: 300,
+                      height: 300,
+                  }}
+                  source={require("../assets/react3.json")}
+                  />
+              </View>
+                <Heading color='lightblue' fontSize={30}>REACT NATIVE</Heading>
+                <Text style={{ textAlign: 'center', fontSize: 18, marginHorizontal: 20}}>
+                React Native is an open-source framework for building cross-platform mobile apps with JavaScript and React.
+                It offers a rich collection of pre-built native components, enabling efficient development for both iOS and
+                Android using a single codebase.</Text>
+              <TouchableOpacity onPress={()=> {
+                
+              }}>
+                <Icon marginBottom='300' color='gray' marginTop={100} as={ChevronDown} />  
+              </TouchableOpacity>       
           </VStack>      
 
           <VStack
-    h="100%"
-    flex={1}
-    justifyContent="center"
-    alignContent='center'
-    bg="$backgroundLight0"
-    sx={{
-      _web: {
-        minHeight: '100vh',
-      },
-    }}>
+          h="100%"
+          flex={1}
+          justifyContent="center"
+          alignContent='center'
+          bg="$backgroundLight0"
+          sx={{
+            _web: {
+              minHeight: '100vh',
+            },
+          }}>
     <Box width='100%' height='100%' alignItems="center" flexWrap='wrap' flexDirection='row' backgroundColor='#ffffff' gap={25} justifyContent='space-evenly' paddingBottom={25}>
       
     <TouchableOpacity 
@@ -185,12 +181,14 @@ export default function Sec({ navigation }) {
       </Box>
     </TouchableOpacity>
 
+    <TouchableOpacity onPress={()=> navigation.navigate('Car')}>
+    <Box backgroundColor='pink' style={styles.container}>
+        <Text style={styles.txtcolor}>Carousel</Text>
+    </Box>
+  </TouchableOpacity>
 
-        <Box backgroundColor='pink' style={styles.container}>
-        <Text>Box</Text>
-    </Box>
-    </Box>
-  </VStack>
+            </Box>
+          </VStack>
         </ScrollView>
       </Box>
     );

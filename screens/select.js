@@ -1,27 +1,30 @@
-import { SafeAreaView, Text } from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
+import { MultipleSelectList, SelectList } from 'react-native-dropdown-select-list';
 import {
   GluestackUIProvider, 
   VStack,
   Box,
-  Select,
-  SelectTrigger,
-  SelectInput,
-  SelectIcon,
-  SelectPortal,
-  SelectBackdrop,
-  SelectContent,
-  SelectDragIndicator,
-  SelectDragIndicatorWrapper,
-  SelectItem,
-  Icon
+  CloseIcon,
+  CheckIcon
 } from '@gluestack-ui/themed';
 import React from 'react';
 import { config } from '@gluestack-ui/config';
-import { ChevronDownIcon } from 'lucide-react-native';
+
 
 
 
 export default function App() {
+
+  const [selected, setSelected] = React.useState("");
+  const [categories, setCategories] = React.useState([]);
+  
+  const data = [
+    {key:'Canada', value:'Canada'},
+    {key:'England', value:'England'},
+    {key:'Pakistan', value:'Pakistan'},
+    {key:'India', value:'India'},
+    {key:'NewZealand', value:'NewZealand'},
+  ]
 
   const Sel = () => {
   return (
@@ -37,41 +40,34 @@ export default function App() {
         minHeight: '100vh',
       },
     }}>
-    <Box width='100%' height='100%' alignItems="center" backgroundColor='#ffffff' flex={0} justifyContent='space-evenly'>
+    <Box width='100%' height='100%' alignItems="center" backgroundColor='#ffffff' flex={0} justifyContent='center'>
 
-    
-            <Select>
-            <SelectTrigger variant="outline" size="md" >
-            <SelectInput placeholder="Select option" />
-            <SelectIcon mr="$3">
-                <Icon as={ChevronDownIcon} />
-            </SelectIcon>
-            </SelectTrigger>
-            <SelectPortal>
-            <SelectBackdrop/>
-            <SelectContent>
-                <SelectDragIndicatorWrapper>
-                <SelectDragIndicator />
-                </SelectDragIndicatorWrapper>
-                <SelectItem label="UX Research" value="ux" />
-                <SelectItem label="Web Development" value="web" />
-                <SelectItem
-                label="Cross Platform Development Process"
-                value="Cross Platform Development Process"
-                />
-                <SelectItem
-                label="UI Designing"
-                value="ui"
-                isDisabled={true}
-                />
-                <SelectItem
-                label="Backend Development"
-                value="backend"
-                />
-            </SelectContent>
-            </SelectPortal>
-        </Select>
+          <SelectList setSelected={setSelected} data={data}  />
 
+          <MultipleSelectList 
+            setSelected={(val) => setCategories(val)} 
+            data={data} 
+            save="value"
+            label="Categories"
+            boxStyles={{marginTop:25}}
+            />
+
+          <View style={{marginTop:50}}>
+            <Text>Selected Value : </Text>
+            <Text style={{marginTop:10,color:'gray'}}>{selected}</Text>
+          </View> 
+
+          <View style={{marginTop:30}}>
+            <Text>Selected Categories : </Text>
+            {
+              categories.map((item) => {
+                return(
+                  <Text key={item} style={{marginTop:1,color:'gray'}}>{item}</Text>
+                )
+              })
+            }
+            
+          </View>     
     </Box>
     </VStack>
 

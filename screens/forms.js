@@ -15,11 +15,12 @@ import {
   FormControlHelper,
   FormControlHelperText,
   FormControlError,
-  FormControlErrorText
+  FormControlErrorText,
+  FormControlErrorIcon,
 } from '@gluestack-ui/themed';
 import React from 'react';
 import { config } from '@gluestack-ui/config';
-import { CheckIcon, FormControlErrorIcon, AlertCircleIcon } from 'lucide-react-native';
+import { CheckIcon, AlertCircleIcon } from 'lucide-react-native';
 
 
 

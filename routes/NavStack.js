@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import Hello from '../screens/intro';
 import Main from '../screens/Sec';
+import Car from '../screens/carousel';
 import Asheet from '../screens/actionsheet';
 import Alert from '../screens/alertdialog';
 import AlertInfo from '../screens/alert';
@@ -10,7 +11,6 @@ import Badge from '../screens/badge';
 import Box from '../screens/box';
 import Form from '../screens/forms';
 import Divider from '../screens/divider';
-import Fab from '../screens/fabb';
 import Prog from '../screens/progress';
 import Mod from '../screens/modal';
 import Rad from '../screens/radio';
@@ -124,16 +124,6 @@ const screens = {
         
         }
     },
-    Fab: {
-        screen: Fab,
-        navigationOptions: {
-            title: 'Fab',
-            headerStyle: {
-                backgroundColor: 'lightblue',
-            },
-        
-        }
-    },
     Prog: {
         screen: Prog,
         navigationOptions: {
@@ -228,6 +218,16 @@ const screens = {
         screen: Tip,
         navigationOptions: {
             title: 'Tooltip',
+            headerStyle: {
+                backgroundColor: 'lightblue',
+            },
+        
+        }
+    },
+    Car: {
+        screen: Car,
+        navigationOptions: {
+            title: 'Carousel',
             headerStyle: {
                 backgroundColor: 'lightblue',
             },

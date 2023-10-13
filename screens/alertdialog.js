@@ -15,11 +15,11 @@ import {
   Icon,
   Heading,
   VStack,
-  Box
+  Box,
+  CloseIcon
 } from '@gluestack-ui/themed';
 import React from 'react';
 import { config } from '@gluestack-ui/config';
-import { CloseIcon } from 'lucide-react-native';
 
 
 
